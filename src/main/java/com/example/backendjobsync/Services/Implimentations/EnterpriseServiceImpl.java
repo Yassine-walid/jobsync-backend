@@ -18,4 +18,8 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     public List<Enterprise> getAllEnterprises(){
         return enterpriseRepository.findAll();
     }
+    public Enterprise saveDetails(Enterprise enterprise) {
+        return enterpriseRepository.save(enterprise);
+    }
+
 }

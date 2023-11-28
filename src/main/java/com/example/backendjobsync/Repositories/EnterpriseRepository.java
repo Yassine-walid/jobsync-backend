@@ -9,4 +9,5 @@ import java.util.UUID;
 @Repository
 public interface EnterpriseRepository extends JpaRepository<Enterprise, UUID> {
 
+
 }
