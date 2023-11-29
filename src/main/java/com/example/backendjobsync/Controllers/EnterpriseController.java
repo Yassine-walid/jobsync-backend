@@ -27,11 +27,8 @@ public class EnterpriseController {
     }
 
     @PostMapping("/add")
-    public Enterprise  addEntreprises(@RequestBody Enterprise entreprise){
-        if (entreprise.getLogoUrl()==null){
-        entreprise.setLogoUrl("url vide" );}
-        return enterpriseService.saveDetails(entreprise);
-
+    public Enterprise addEnterprise(@RequestBody Enterprise enterprise) throws Exception{
+        return enterpriseService.saveDetails(enterprise);
     }
 
 }

@@ -5,8 +5,11 @@ import com.example.backendjobsync.Repositories.EnterpriseRepository;
 import com.example.backendjobsync.Services.EnterpriseService;
 import lombok.RequiredArgsConstructor;
 
+
 import org.springframework.stereotype.Service;
 
+
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -18,7 +21,17 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     public List<Enterprise> getAllEnterprises(){
         return enterpriseRepository.findAll();
     }
-    public Enterprise saveDetails(Enterprise enterprise) {
+    public Enterprise saveDetails(Enterprise enterprise) throws Exception {
+
+        // Fill the logoUrl Field
+        if (enterprise.getLogoUrl()==null){
+            enterprise.setLogoUrl("https://placehold.co/400x400");
+        }
+        // Check If the date is older than today's date
+        if(enterprise.getFoundationDate().after(new Date())){
+            throw new Exception("Date Invalid");
+        }
+
         return enterpriseRepository.save(enterprise);
     }
 

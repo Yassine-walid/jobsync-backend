@@ -9,6 +9,6 @@ import java.util.List;
 public interface EnterpriseService {
 
     List<Enterprise> getAllEnterprises();
-     Enterprise saveDetails(Enterprise enterprise);
+    Enterprise saveDetails(Enterprise enterprise) throws Exception;
 
 }
