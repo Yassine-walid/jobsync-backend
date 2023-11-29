@@ -7,9 +7,11 @@ import com.example.backendjobsync.Services.EnterpriseService;
 import lombok.RequiredArgsConstructor;
 
 
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/enterprise")
@@ -30,5 +32,8 @@ public class EnterpriseController {
     public Enterprise addEnterprise(@RequestBody Enterprise enterprise) throws Exception{
         return enterpriseService.saveDetails(enterprise);
     }
-
+    @DeleteMapping("/delete/{id}")
+    public String deleteEnterprise(@PathVariable UUID id) {
+        return enterpriseService.deleteEnterprise(id);
+    }
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -31,8 +32,11 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         if(enterprise.getFoundationDate().after(new Date())){
             throw new Exception("Date Invalid");
         }
+        return enterpriseRepository.save(enterprise); }
+        public String deleteEnterprise(UUID id) {
+             enterpriseRepository.deleteById(id);
+             return"enterprise deleted";
+        }
 
-        return enterpriseRepository.save(enterprise);
-    }
 
 }
