@@ -35,7 +35,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         return enterpriseRepository.save(enterprise); }
         public String deleteEnterprise(UUID id) {
              enterpriseRepository.deleteById(id);
-             return"enterprise deleted";
+             return"enterprise deleted successfully";
         }
 
 
