@@ -30,12 +30,12 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         }
         // Check If the date is older than today's date
         if(enterprise.getFoundationDate().after(new Date())){
-            throw new Exception("Date Invalid");
+            throw new Exception("date invalide");
         }
         return enterpriseRepository.save(enterprise); }
         public String deleteEnterprise(UUID id) {
              enterpriseRepository.deleteById(id);
-             return"enterprise deleted successfully";
+             return"enterprise deleted ";
         }
 
 
