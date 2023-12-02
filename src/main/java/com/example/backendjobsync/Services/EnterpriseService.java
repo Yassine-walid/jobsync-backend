@@ -12,4 +12,5 @@ public interface EnterpriseService {
     List<Enterprise> getAllEnterprises();
     Enterprise saveDetails(Enterprise enterprise) throws Exception;
     String deleteEnterprise(UUID id);
+
 }
