@@ -1,8 +1,8 @@
 package com.example.backendjobsync.Controllers;
 
-import com.example.backendjobsync.Entities.Announcement;
+
 import com.example.backendjobsync.Entities.Domain;
-import com.example.backendjobsync.Entities.Enterprise;
+
 import com.example.backendjobsync.Services.DomainService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -1,7 +1,5 @@
 package com.example.backendjobsync.Services.Implimentations;
 
-import com.example.backendjobsync.Entities.Domain;
-import com.example.backendjobsync.Entities.Enterprise;
 import com.example.backendjobsync.Entities.Post;
 import com.example.backendjobsync.Repositories.PostRepository;
 import com.example.backendjobsync.Services.PostService;

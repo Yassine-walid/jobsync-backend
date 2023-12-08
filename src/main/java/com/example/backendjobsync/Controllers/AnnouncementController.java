@@ -1,7 +1,7 @@
 package com.example.backendjobsync.Controllers;
 
 import com.example.backendjobsync.Entities.Announcement;
-import com.example.backendjobsync.Entities.Enterprise;
+
 import com.example.backendjobsync.Services.AnnouncementService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -9,9 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 import java.util.Optional;
-import java.util.UUID;
+
 
 @Controller
 @RequestMapping("/announcement")

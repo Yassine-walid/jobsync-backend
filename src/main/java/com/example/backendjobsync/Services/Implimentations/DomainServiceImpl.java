@@ -1,6 +1,6 @@
 package com.example.backendjobsync.Services.Implimentations;
 
-import com.example.backendjobsync.Entities.Announcement;
+
 import com.example.backendjobsync.Entities.Domain;
 import com.example.backendjobsync.Repositories.DomainRepository;
 import com.example.backendjobsync.Services.DomainService;
@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+
 import java.util.List;
 import java.util.Optional;
 

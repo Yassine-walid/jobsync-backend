@@ -4,7 +4,7 @@ import com.example.backendjobsync.Entities.Announcement;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
-import java.util.UUID;
+
 
 public interface AnnouncementService {
 

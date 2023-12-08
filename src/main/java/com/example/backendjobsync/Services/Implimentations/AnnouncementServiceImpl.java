@@ -1,7 +1,7 @@
 package com.example.backendjobsync.Services.Implimentations;
 
 import com.example.backendjobsync.Entities.Announcement;
-import com.example.backendjobsync.Entities.Enterprise;
+
 import com.example.backendjobsync.Repositories.AnnouncementRepository;
 import com.example.backendjobsync.Services.AnnouncementService;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+
 
 @Service
 @RequiredArgsConstructor

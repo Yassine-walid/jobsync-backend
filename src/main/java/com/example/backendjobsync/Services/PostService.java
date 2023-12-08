@@ -1,12 +1,11 @@
 package com.example.backendjobsync.Services;
 
-import com.example.backendjobsync.Entities.Announcement;
-import com.example.backendjobsync.Entities.Enterprise;
+
 import com.example.backendjobsync.Entities.Post;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
-import java.util.Optional;
+
 
 public interface PostService {
 
