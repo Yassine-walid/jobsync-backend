@@ -8,27 +8,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-import java.util.UUID;
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Annonce {
+public class Post {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-    private String Titre;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String title;
     private String description;
-    private String Domaine;
-    private String NvEtude;
-    private Number AnsExp;
-    private Date Datedepublication;
-
-
+    private String bannerUrl;
+    private String publicationDate;
 }
-
-
-
-
-

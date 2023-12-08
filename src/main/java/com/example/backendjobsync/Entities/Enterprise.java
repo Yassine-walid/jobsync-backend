@@ -1,15 +1,13 @@
 package com.example.backendjobsync.Entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -18,8 +16,8 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Enterprise {
 
-    @Id @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String description;
     private Date foundationDate;
@@ -28,5 +26,8 @@ public class Enterprise {
     private String logoUrl;
     private Number phoneNumber;
     private String websiteUrl;
+
+    @OneToMany
+    List<Announcement> announcements;
 
 }
