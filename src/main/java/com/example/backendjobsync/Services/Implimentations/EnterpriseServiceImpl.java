@@ -51,13 +51,13 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
         if(enterprise.isPresent()){
             Enterprise enterpriseUpdate = enterprise.get();
-            enterpriseUpdate.setName(newDataEnterprise.getName());
-            enterpriseUpdate.setAddress(newDataEnterprise.getAddress());
-            enterpriseUpdate.setDescription(newDataEnterprise.getDescription());
-            enterpriseUpdate.setFoundationDate(newDataEnterprise.getFoundationDate());
-            enterpriseUpdate.setLogoUrl(newDataEnterprise.getLogoUrl());
-            enterpriseUpdate.setWebsiteUrl(newDataEnterprise.getWebsiteUrl());
-            enterpriseUpdate.setPhoneNumber(newDataEnterprise.getPhoneNumber());
+            if(newDataEnterprise.getName()!=null)enterpriseUpdate.setName(newDataEnterprise.getName());
+            if(newDataEnterprise.getAddress()!=null)enterpriseUpdate.setAddress(newDataEnterprise.getAddress());
+            if(newDataEnterprise.getDescription()!=null)enterpriseUpdate.setDescription(newDataEnterprise.getDescription());
+            if(newDataEnterprise.getFoundationDate()!=null)enterpriseUpdate.setFoundationDate(newDataEnterprise.getFoundationDate());
+            if(newDataEnterprise.getLogoUrl()!=null)enterpriseUpdate.setLogoUrl(newDataEnterprise.getLogoUrl());
+            if(newDataEnterprise.getWebsiteUrl()!=null)enterpriseUpdate.setWebsiteUrl(newDataEnterprise.getWebsiteUrl());
+            if(newDataEnterprise.getPhoneNumber()!=null)enterpriseUpdate.setPhoneNumber(newDataEnterprise.getPhoneNumber());
             enterpriseRepository.save(enterpriseUpdate);
             return new ResponseEntity<>(enterpriseUpdate,HttpStatus.ACCEPTED);
         }else {

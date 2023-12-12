@@ -25,6 +25,10 @@ public class Announcement {
     private Number yearsExp;
     private Date puclicationDate;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "enterprise_id",nullable = false)
+    private Enterprise enterprise;
+
 
 
 

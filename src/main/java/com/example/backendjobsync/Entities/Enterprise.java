@@ -1,6 +1,7 @@
 package com.example.backendjobsync.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,7 +28,8 @@ public class Enterprise {
     private Number phoneNumber;
     private String websiteUrl;
 
-    @OneToMany
-    List<Announcement> announcements;
+    @OneToMany(mappedBy = "id")
+    @JsonIgnore
+    private List<Announcement> announcements;
 
 }
