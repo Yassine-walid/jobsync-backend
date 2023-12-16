@@ -1,6 +1,6 @@
-package com.example.backendjobsync.Controllers;
-import com.example.backendjobsync.Entities.Post;
-import com.example.backendjobsync.Services.PostService;
+package com.example.backendjobsync.controllers;
+import com.example.backendjobsync.entities.Post;
+import com.example.backendjobsync.services.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +11,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/post")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class PostController {
     private final PostService postService;
 

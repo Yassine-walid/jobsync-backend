@@ -1,8 +1,8 @@
-package com.example.backendjobsync.Services.Implimentations;
+package com.example.backendjobsync.services.implimentations;
 
-import com.example.backendjobsync.Entities.Post;
-import com.example.backendjobsync.Repositories.PostRepository;
-import com.example.backendjobsync.Services.PostService;
+import com.example.backendjobsync.entities.Post;
+import com.example.backendjobsync.repositories.PostRepository;
+import com.example.backendjobsync.services.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,9 +44,9 @@ public class PostServiceImpl implements PostService {
 
             Post postUpdate = post.get();
 
-            postUpdate.setTitle(newDataPost.getTitle());
-            postUpdate.setDescription(newDataPost.getDescription());
-            postUpdate.setBannerUrl(newDataPost.getBannerUrl());
+            if(newDataPost.getTitle() != null)postUpdate.setTitle(newDataPost.getTitle());
+            if(newDataPost.getDescription() != null)postUpdate.setDescription(newDataPost.getDescription());
+            if(newDataPost.getBannerUrl() != null)postUpdate.setBannerUrl(newDataPost.getBannerUrl());
             postRepository.save(postUpdate);
             return new ResponseEntity<>(postUpdate,HttpStatus.ACCEPTED);
         }else {

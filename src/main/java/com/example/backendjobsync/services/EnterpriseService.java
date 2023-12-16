@@ -1,6 +1,6 @@
-package com.example.backendjobsync.Services;
+package com.example.backendjobsync.services;
 
-import com.example.backendjobsync.Entities.Enterprise;
+import com.example.backendjobsync.entities.Enterprise;
 import org.springframework.http.ResponseEntity;
 
 
@@ -11,6 +11,8 @@ import java.util.Optional;
 
 
 public interface EnterpriseService {
+
+
 
     List<Enterprise> getAllEnterprises();
     Enterprise saveDetails(Enterprise enterprise) throws Exception;

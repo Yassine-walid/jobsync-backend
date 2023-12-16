@@ -1,9 +1,9 @@
-package com.example.backendjobsync.Controllers;
+package com.example.backendjobsync.controllers;
 
 
-import com.example.backendjobsync.Entities.Domain;
+import com.example.backendjobsync.entities.Domain;
 
-import com.example.backendjobsync.Services.DomainService;
+import com.example.backendjobsync.services.DomainService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +15,7 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/domain")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class DomainController {
 
     private final DomainService domainService;

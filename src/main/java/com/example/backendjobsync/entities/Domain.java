@@ -1,4 +1,4 @@
-package com.example.backendjobsync.Entities;
+package com.example.backendjobsync.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,9 +1,9 @@
-package com.example.backendjobsync.Services.Implimentations;
+package com.example.backendjobsync.services.implimentations;
 
 
-import com.example.backendjobsync.Entities.Domain;
-import com.example.backendjobsync.Repositories.DomainRepository;
-import com.example.backendjobsync.Services.DomainService;
+import com.example.backendjobsync.entities.Domain;
+import com.example.backendjobsync.repositories.DomainRepository;
+import com.example.backendjobsync.services.DomainService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

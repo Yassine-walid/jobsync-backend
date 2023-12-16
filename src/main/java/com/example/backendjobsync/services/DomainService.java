@@ -1,6 +1,6 @@
-package com.example.backendjobsync.Services;
+package com.example.backendjobsync.services;
 
-import com.example.backendjobsync.Entities.Domain;
+import com.example.backendjobsync.entities.Domain;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;

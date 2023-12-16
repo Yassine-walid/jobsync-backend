@@ -1,7 +1,7 @@
-package com.example.backendjobsync.Entities;
+package com.example.backendjobsync.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +21,7 @@ public class Enterprise {
     private Long id;
     private String name;
     private String description;
+    @Temporal(TemporalType.DATE)
     private Date foundationDate;
     private String address;
     private String email;
@@ -28,8 +29,13 @@ public class Enterprise {
     private Number phoneNumber;
     private String websiteUrl;
 
-    @OneToMany(mappedBy = "id")
-    @JsonIgnore
+    @OneToMany(mappedBy = "enterprise", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("enterprise")
     private List<Announcement> announcements;
+
+
+
+
+
 
 }

@@ -1,8 +1,8 @@
-package com.example.backendjobsync.Controllers;
+package com.example.backendjobsync.controllers;
 
-import com.example.backendjobsync.Entities.Enterprise;
+import com.example.backendjobsync.entities.Enterprise;
 
-import com.example.backendjobsync.Services.EnterpriseService;
+import com.example.backendjobsync.services.EnterpriseService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -17,6 +17,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/enterprise")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class EnterpriseController {
 
 

@@ -1,8 +1,8 @@
-package com.example.backendjobsync.Services.Implimentations;
+package com.example.backendjobsync.services.implimentations;
 
-import com.example.backendjobsync.Entities.Enterprise;
-import com.example.backendjobsync.Repositories.EnterpriseRepository;
-import com.example.backendjobsync.Services.EnterpriseService;
+import com.example.backendjobsync.entities.Enterprise;
+import com.example.backendjobsync.repositories.EnterpriseRepository;
+import com.example.backendjobsync.services.EnterpriseService;
 import lombok.RequiredArgsConstructor;
 
 

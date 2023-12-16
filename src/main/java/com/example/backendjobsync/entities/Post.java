@@ -1,4 +1,4 @@
-package com.example.backendjobsync.Entities;
+package com.example.backendjobsync.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,12 +10,14 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Role {
-
+@NoArgsConstructor
+public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long roleId;
-    private String role;
+    private Long id;
+    private String title;
+    private String description;
+    private String bannerUrl;
+    private String publicationDate;
 }
