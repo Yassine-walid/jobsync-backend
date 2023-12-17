@@ -1,13 +1,11 @@
 package com.example.backendjobsync.repositories;
 
-import com.example.backendjobsync.entities.UserEntity;
+import com.example.backendjobsync.entities.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
-public interface UserRepository extends JpaRepository<UserEntity,Long> {
-
-    Optional<UserEntity> findByUsername(String username);
-    Boolean existsByUsername(String username);
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+    User findByUsername(String username);
 }

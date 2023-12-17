@@ -1,64 +1,72 @@
 package com.example.backendjobsync.security;
 
+
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
 
-import java.net.http.HttpClient;
+import java.util.Arrays;
+import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private JwtAuthEntryPoint authEntryPoint;
-
-    private CustomUserDetailsService userDetailsService;
-
     @Autowired
-    public SecurityConfig(CustomUserDetailsService userDetailsService, JwtAuthEntryPoint authEntryPoint) {
-        this.userDetailsService = userDetailsService;
-        this.authEntryPoint= authEntryPoint;
+    AuthenticationManager authenticationManager;
+
+    @Bean
+    public AuthenticationManager authenticationManager(
+        HttpSecurity httpSecurity,
+        BCryptPasswordEncoder bCryptPasswordEncoder,
+        UserDetailsService userDetailsService
+    ) throws Exception{
+
+    return httpSecurity.getSharedObject(AuthenticationManagerBuilder.class)
+            .userDetailsService(userDetailsService)
+            .passwordEncoder(bCryptPasswordEncoder).and().build();
+
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-        http
-                .csrf().disable()
-                .exceptionHandling()
-                .authenticationEntryPoint(authEntryPoint)
-                .and()
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
+        httpSecurity.csrf().disable()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                .cors().configurationSource(new CorsConfigurationSource() {
+                    @Override
+                    public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
+                        CorsConfiguration config = new CorsConfiguration();
+                        config.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
+                        config.setAllowedMethods(Collections.singletonList("*"));
+                        config.setAllowCredentials(true);
+                        config.setAllowedHeaders(Collections.singletonList("*"));
+                        config.setExposedHeaders(Arrays.asList("Authorization"));
+                        config.setMaxAge(3600L);
+                        return config;
+                    }
+                }).and()
+
                 .authorizeHttpRequests()
-                .requestMatchers("/auth/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .httpBasic();
+                .requestMatchers("/login").permitAll()
+                .requestMatchers("/api/users").hasAuthority("ADMIN")
+                .anyRequest().authenticated().and()
+                .addFilterBefore(new JWTAuthenticationFilter(authenticationManager), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
 
-        return http.build();
+        return httpSecurity.build();
     }
 
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)throws Exception{
-        return authenticationConfiguration.getAuthenticationManager();
-    }
-
-    @Bean
-    PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
 }
